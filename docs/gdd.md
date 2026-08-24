@@ -1,21 +1,21 @@
-# Air Combat Comand    
-   
+# Air Combat Command    
+     
      
 ## concept summary        
                          
-this is a game where you take controll of a space ship and defend yourself from attacking ships with difrent abilities untill you reach the end of the course. you shoot at the attacking ships to take them down, they have the ability to shoot at you as well. after a certan amount of play time you will reach the end of the course winning the game. there is a posibility of a boss fight but that isnt solidified at this time.               
+This is a game where you take control of a space ship and defend yourself from attacking ships with different abilities until you reach the end of the course. You shoot at the attacking ships to take them down, they have the ability to shoot at you as well. After a certain amount of play time you will reach the end of the course winning the game. There is a possibility of a boss fight but that isn't solidified at this time.               
                                                        
 ## core loop            
                   
-the player will take controll of a ship using the keys and firing at oncomming enemies while avoiding on comming fire from the enemies. they will rack up points for each ship downed. they are given an hp bar and will recive a game over if it reaches zero. at the end of the level or course the game ends.               
+The player will take control of a ship using the keys and firing at oncoming enemies while avoiding oncoming fire from the enemies. They will rack up points for each ship downed. They are given an hp bar and will receive a game over if it reaches zero. At the end of the level or course the game ends.               
                                                                   
-## controlls                   
+## controls                   
                         
-W, A, S, D to move and space to fire. verry simple and avrage controll scheme                 
+W, A, S, D to move and space to fire. a Very simple and average control scheme.                 
                                                                                  
 ## goal                              
                           
-the goal at this point in time is to reach the end of the course, I may add a boss if i have time. if i dont i may just frame it as getting to your home plannet.                           
+The goal at this point in time is to reach the end of the course, I may add a boss if i have time. If I don't, I may just frame it as getting to your home planet.                           
                                               
 ## features                   
                             
@@ -23,11 +23,11 @@ the goal at this point in time is to reach the end of the course, I may add a bo
                          
 - enemies                 
                 
-- controlls including fire                      
+- controls including fire                      
                                   
 - win condition                                
                              
-- rough enemie logic                       
+- rough enemies logic                       
                                     
 - basic graphics                     
                            
@@ -45,7 +45,7 @@ the goal at this point in time is to reach the end of the course, I may add a bo
                     
 ## game states                     
                     
-- menu / title screan                         
+- menu / title screen                         
                                 
 - main gameplay                   
                    
@@ -55,4 +55,4 @@ the goal at this point in time is to reach the end of the course, I may add a bo
                
 ## art direction
 
-basic shapes for v1.0 may make some art for it as i go into v2 but will be dependent on time and workload
+basic shapes for v1.0 may make some art for it as i go into v2 but will be dependent on time and workload (# and may not be that good)
