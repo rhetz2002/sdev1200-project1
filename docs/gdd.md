@@ -18,7 +18,7 @@ W, A, S, D to move and space to fire. a Very simple and average control scheme.
 The goal at this point in time is to reach the end of the course, I may add a boss if i have time. If I don't, I may just frame it as getting to your home planet.                           
                                               
 ## features                   
-                            
+                             
 (v1 must have)                 
                          
 - enemies                 
