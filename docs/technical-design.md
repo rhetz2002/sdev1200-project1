@@ -19,32 +19,32 @@ sdev1200-project1
 
 ## classes
 
-- enemy 1,2,3
-hp (int)
-attack type (int)
-sprite (file)
+- enemy 1,2,3           
+hp (int)               
+attack type (int)           
+sprite (file)             
 
-- attacks 1,2,3
-damage (int/range of ints)
-animation/sprite (file)
-position (x, y)
+- attacks 1,2,3                
+damage (int/range of ints)           
+animation/sprite (file)              
+position (x, y)                                                                   
 
-- enemy_cluster (I envision the enemies working a little like Galaga/space invaders, moves the entirety of the enemies on screen)
-position (x,y)
-number of enemies (int)
-random movement  (int)
+- enemy_cluster (I envision the enemies working a little like Galaga/space invaders, moves the entirety of the enemies on screen)           
+position (x,y)             
+number of enemies (int)           
+random movement  (int)           
+ 
+- game state           
+game time (int)            
+pause (bool)          
+start (bool)         
+end (bool)              
 
-- game state
-game time (int)
-pause (bool)
-start (bool)
-end (bool)
-
-- player
-life (int)
-hp (int)
-position (x, y)
-sprite (file)
+- player           
+life (int)          
+hp (int)             
+position (x, y)              
+sprite (file)           
 
 ## game states
 
