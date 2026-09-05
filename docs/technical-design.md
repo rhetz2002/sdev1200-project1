@@ -9,10 +9,10 @@ sdev1200-project1
 │    ├── main.py             
 │    ├── attacks.py                  
 │    ├── movement.py    
-│    ├── enemy.py
-│    ├── player.py
-│    ├── script.py
-│    ├── class.py                              
+│    ├── enemy.py            
+│    ├── player.py              
+│    ├── script.py            
+│    ├── class.py                               
 │    └── sprites/                                
 ├──docs/             
 └──README.md   
