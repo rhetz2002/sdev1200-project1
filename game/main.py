@@ -21,9 +21,16 @@ from enemie import enemie_orange
 from enemie import enemie_blue
 from enemie import enemie_green
 import asyncio
+from ui import title
+from ui import start_button
 # Initalises pygame
 
 pygame.init()
+
+def quit():
+
+    pygame.quit()
+    sys.exit()
 
 #test code for testing eneime spawn
 random_spawn = random.randint(1160 ,11120)
@@ -50,10 +57,19 @@ running = True
 
 
 # add sprites to sprite groups
-player_obj = player()
+
+#menu images 
+
+Title = title()
+Title_sprite = pygame.sprite.GroupSingle()
+Title_sprite.add(Title)
+
+start = start_button()
+startbutton = pygame.sprite.GroupSingle()
+startbutton.add(start)
 
 # single sprite group for player
-
+player_obj = player()
 player_sprite = pygame.sprite.GroupSingle()
 player_sprite.add(player_obj)
 
@@ -65,9 +81,39 @@ green_enemie = pygame.sprite.Group()
 blue_enemie = pygame.sprite.Group()
 orange_enemie = pygame.sprite.Group()
 
+menu = True
 
 # while loop will end when user choses to close game
 while running:
+
+    while menu is True:
+
+        Title_sprite.draw(screen)
+
+        startbutton.draw(screen)    
+
+        pygame.display.flip() 
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                
+                if event.button == 1: 
+
+                    if start.rect.collidepoint(event.pos):
+
+                        menu = False
+
+
+
+            if event.type == pygame.QUIT:
+            
+                running = False
+
+                quit()
+
+    
+    
 
     for enemie in green_enemie:
 
@@ -271,5 +317,6 @@ while running:
             
 # Cleanly closes game
 
-pygame.quit()
-sys.exit()
+quit()
+
+    
