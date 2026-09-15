@@ -1,6 +1,8 @@
 import random
 import pygame
 import time
+from script import *
+
 # enemie class 1
 
 class enemie_orange(pygame.sprite.Sprite):
@@ -11,13 +13,13 @@ class enemie_orange(pygame.sprite.Sprite):
         
         self.image = pygame.image.load('sprite/enemy1.png').convert_alpha()  
         
-        self.image = pygame.transform.scale(self.image, (45, 45))
+        self.image = pygame.transform.scale(self.image, (100, 100))
 
         self.rect = self.image.get_rect()
 
     
 
-    def attack(self):
+    def atk(self):
         
         bullet = orange_bullet()
 
@@ -25,9 +27,19 @@ class enemie_orange(pygame.sprite.Sprite):
 
         return bullet
 
-    def spawn(self):
+    def spawn(self, item):
 
-        self.rect.topleft = (650,600)
+        self.rect.topleft = (item, -110)
+
+        
+
+                
+            
+        
+
+                 
+
+
 
     def update(self):
 
@@ -63,7 +75,7 @@ class enemie_blue(pygame.sprite.Sprite):
         
         self.image = pygame.image.load('sprite/enemy2.png').convert_alpha()  
         
-        self.image = pygame.transform.scale(self.image, (45, 45))
+        self.image = pygame.transform.scale(self.image, (100, 100))
 
         self.rect = self.image.get_rect()
 
@@ -89,11 +101,10 @@ class enemie_blue(pygame.sprite.Sprite):
         bullet3 = blue_bullet3()
         bullet3.fire(self.rect.x, self.rect.y)
         return bullet3
-    def spawn(self):
+    
+    def spawn(self, item):
 
-        self.rect.x = 200
-        
-        self.rect.y = 600
+        self.rect.topleft = (item, -110)
 
     def update(self):
 
@@ -169,7 +180,7 @@ class enemie_green(pygame.sprite.Sprite):
         
         self.image = pygame.image.load('sprite/enemy3.png').convert_alpha()  
         
-        self.image = pygame.transform.scale(self.image, (45, 45))
+        self.image = pygame.transform.scale(self.image, (100, 100))
 
         self.rect = self.image.get_rect()
 
@@ -187,10 +198,11 @@ class enemie_green(pygame.sprite.Sprite):
 
             return bullet
 
-    def spawn(self):
+    def spawn(self, item):
 
-        self.rect.topleft = (1,6)
-
+        self.rect.topleft = (item,-110)
+            
+    
     def update(self):
 
         self.rect.y += 1

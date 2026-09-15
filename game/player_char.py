@@ -38,16 +38,20 @@ class player(pygame.sprite.Sprite):
 
         self.image = pygame.image.load('sprite/player.png').convert_alpha()  
         
-        self.image = pygame.transform.scale(self.image, (45, 45))
+        self.image = pygame.transform.scale(self.image, (100, 100))
 
         self.rect = self.image.get_rect()
 
         self.rect.topleft = (650,600)
 
         self.hp = 15
-
-        self.lives = 5
     
+    def restart(self):
+        
+        self.rect.topleft = (605,600)
+
+        self.hp = 15
+
     def player_con(self):
         
         pressed = pygame.key.get_pressed()
@@ -75,7 +79,11 @@ class player(pygame.sprite.Sprite):
 
         if self.hp <= 0:
 
-            self.kill()
+            gameover = True
+
+            return gameover
+    
+    
         
 
     
