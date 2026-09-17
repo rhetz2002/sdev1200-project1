@@ -37,6 +37,7 @@ from ui import start_button
 from ui import game_over
 from ui import restart
 from ui import win
+from ui import score
 from script import *
 
 # Initalises pygame
@@ -58,6 +59,8 @@ spawn_timer = 0
 
 move_clock = 0
 
+score_value = 0
+
 # tracks which items in the script have been done to prevent spam
 past_item_green = []
 past_item_blue = []
@@ -70,7 +73,6 @@ game_clock = 0
 width = 1400
 height = 900
 screen = pygame.display.set_mode((width, height))
-score=0
 
 # Sets window caption
 pygame.display.set_caption("Air Combat Comand")
@@ -82,6 +84,8 @@ gameover = False
 # add sprites to sprite groups
 
 #menu images 
+
+score_display = score()
 
 Title = title()
 Title_sprite = pygame.sprite.GroupSingle()
@@ -110,6 +114,7 @@ player_sprite.add(player_obj)
 
 bullet = pygame.sprite.Group()
 enemie_bullets = pygame.sprite.Group()
+
 
 
 green_enemie = pygame.sprite.Group()
@@ -159,6 +164,8 @@ while running:
     
     
 
+    score_display.score_draw(screen, 50, 50, score)
+
     for enemie in green_enemie:
 
             if enemie.shots_fired < 3:
@@ -185,6 +192,7 @@ while running:
     
     surf.fill((0, 0, 0))
 
+    
 
     #draws sprites
 
@@ -212,6 +220,8 @@ while running:
     
     #TEMP COMMENT DO NOT REMOVE
 
+    
+
     enemie_bullets.draw(screen)
 
     bullet.draw(screen) 
@@ -224,6 +234,10 @@ while running:
 
     orange_enemie.draw(screen)
 
+    pygame.draw.rect(screen, (0, 255, 0), (30, 850, player_obj.hp * 20 , 30) ) 
+
+    score_display.score_draw(screen, 50, 50,  score_value)
+    
 
     pygame.display.flip() 
         
@@ -331,6 +345,8 @@ while running:
         if bullet_hit_green or bullet_hit_blue or bullet_hit_orange: 
 
             active.kill()
+
+            score_value += 30
     
 
     for active in enemie_bullets:
@@ -343,9 +359,18 @@ while running:
 
             active.kill()
 
-            print(gameover)
+            
+    
 
-    print(start_tick)
+    
+
+       
+    
+    
+    
+    
+    
+
     if curent_tick - start_tick == 67000:
         win = True
 
