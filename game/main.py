@@ -371,7 +371,7 @@ while running:
     
     
 
-    if curent_tick - start_tick == 67000:
+    if curent_tick - start_tick >= 67000:
         win = True
 
     if gameover is True or win is True:
