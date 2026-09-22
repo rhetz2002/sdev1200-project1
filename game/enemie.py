@@ -31,19 +31,13 @@ class enemie_orange(pygame.sprite.Sprite):
 
         self.rect.topleft = (item, -110)
 
-        
-
-                
-            
-        
-
-                 
-
-
-
     def update(self):
 
         self.rect.y += 1
+
+        if self.rect.y >= 900:
+
+            self.kill()
 
 class orange_bullet(pygame.sprite.Sprite):
 
@@ -64,6 +58,10 @@ class orange_bullet(pygame.sprite.Sprite):
     def update(self):
     
         self.rect.y += 1
+
+        if self.rect.y >= 900:
+
+            self.kill()
 
 
 class enemie_blue(pygame.sprite.Sprite):
@@ -110,6 +108,10 @@ class enemie_blue(pygame.sprite.Sprite):
 
         self.rect.y += 1
 
+        if self.rect.y >= 900:
+
+            self.kill()
+
 class blue_bullet(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -130,6 +132,10 @@ class blue_bullet(pygame.sprite.Sprite):
     
         self.rect.y += 1
         self.rect.x += 1
+
+        if self.rect.y >= 900:
+
+            self.kill()
 
 class blue_bullet2(pygame.sprite.Sprite):
 
@@ -152,6 +158,10 @@ class blue_bullet2(pygame.sprite.Sprite):
         self.rect.y += 1
         self.rect.x -= 1
 
+        if self.rect.y >= 900:
+            
+            self.kill()
+
 class blue_bullet3(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -171,6 +181,10 @@ class blue_bullet3(pygame.sprite.Sprite):
     def update(self):
     
         self.rect.y += 1
+
+        if self.rect.y >= 900:
+
+            self.kill()
 
 class enemie_green(pygame.sprite.Sprite):
 
@@ -207,6 +221,10 @@ class enemie_green(pygame.sprite.Sprite):
 
         self.rect.y += 1
 
+        if self.rect.y >= 900:
+
+            self.kill()
+
 
 
 class green_bullet(pygame.sprite.Sprite):
@@ -228,3 +246,7 @@ class green_bullet(pygame.sprite.Sprite):
     def update(self):
     
         self.rect.y += 1
+
+        if self.rect.y >= 900:
+
+            self.kill()

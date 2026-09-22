@@ -49,7 +49,7 @@ def quit():
     pygame.quit()
     sys.exit()
 
-Win = False
+wincon = False
 
 #test code for testing eneime spawn
 
@@ -91,9 +91,9 @@ Title = title()
 Title_sprite = pygame.sprite.GroupSingle()
 Title_sprite.add(Title)
 
-Win = win()
+Win_obj = win()
 Win_message = pygame.sprite.GroupSingle()
-Win_message.add(Win)
+Win_message.add(Win_obj)
 
 Game_over = game_over()
 Game_over_message = pygame.sprite.GroupSingle()
@@ -372,13 +372,13 @@ while running:
     
 
     if curent_tick - start_tick >= 67000:
-        win = True
+        wincon = True
 
-    if gameover is True or win is True:
+    if gameover is True or wincon is True:
         
         reset()
         
-        while gameover is True or win is True:
+        while gameover is True or wincon is True:
 
             screen.fill((0, 0, 0))    
 
@@ -390,7 +390,7 @@ while running:
 
                 pygame.display.flip() 
 
-            if win is True:
+            if wincon is True:
 
                 Win_message.draw(screen)
 
@@ -422,7 +422,7 @@ while running:
                         if start.rect.collidepoint(event.pos):
 
                             gameover = False
-                            win = False
+                            wincon = False
 
                             start_tick =  pygame.time.get_ticks()
                             spawn_timer = 0
