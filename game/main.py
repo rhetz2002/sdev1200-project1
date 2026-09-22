@@ -61,6 +61,8 @@ move_clock = 0
 
 score_value = 0
 
+move_tick = 0
+
 # tracks which items in the script have been done to prevent spam
 past_item_green = []
 past_item_blue = []
@@ -328,10 +330,6 @@ while running:
 
         game_clock += 1
 
-       # if event.type == KEYDOWN:
-
-        #    if event.key == K_UP:  
-    
 # checks for bullit hut on enemy
 
     for active in bullet:
@@ -437,6 +435,12 @@ while running:
 
                     quit()
 
+    
+
+    move_tick = player_obj.player_con(move_tick)  
+
+
+
     # listens for user input
     #print(curent_tick)
     for event in pygame.event.get():
@@ -448,7 +452,7 @@ while running:
 
         #controlls player movment
 
-        player_obj.player_con()                
+                      
 
         if event.type == KEYDOWN and event.key == K_SPACE:
 

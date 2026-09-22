@@ -54,18 +54,59 @@ class player(pygame.sprite.Sprite):
 
         self.hp = 15
 
-    def player_con(self):
+    def player_con(self, move_tick):
         
         pressed = pygame.key.get_pressed()
 
         if pressed[K_w]:
-            self.rect.move_ip(0, -5)
+            
+
+            if move_tick >= 30:
+                
+                self.rect.move_ip(0, -5)
+                
+                move_tick = 0
+
+            else:
+
+                move_tick += 1
         if pressed[K_s]:
-            self.rect.move_ip(0, 5)
+            
+            if move_tick >= 30:
+                
+                self.rect.move_ip(0, 5)
+
+                move_tick = 0
+
+            else:
+
+                move_tick += 1
+
         if pressed[K_a]:
-            self.rect.move_ip(-5, 0)
+            
+            if move_tick >= 30:    
+                
+                self.rect.move_ip(-5, 0)
+
+                move_tick = 0
+
+            else:
+
+                move_tick += 1
+
         if pressed[K_d]:
-            self.rect.move_ip(5, 0)
+            
+            if move_tick >= 30:
+                
+                self.rect.move_ip(5, 0)
+
+                move_tick = 0
+
+            else:
+
+                move_tick += 1
+
+        return move_tick
 
     def player_fire(self):
 
