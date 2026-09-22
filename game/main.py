@@ -41,7 +41,7 @@ from ui import score
 from script import *
 
 # Initalises pygame
-
+score 
 pygame.init()
 
 def quit():
@@ -407,8 +407,8 @@ while running:
 
             enemie_bullets.empty()
 
-            score = 0
-    
+            score_value = 0
+
             past_item_green = []
             past_item_blue = []
             past_item_orange = []   
@@ -428,6 +428,7 @@ while running:
                             spawn_timer = 0
                             game_clock = 0
                             move_clock = 0
+                            
 
 
                 if event.type == pygame.QUIT:
