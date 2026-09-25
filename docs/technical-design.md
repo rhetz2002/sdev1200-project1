@@ -1,5 +1,13 @@
 # Air Combat Command Design Map             
-            
+
+- modified file structure by adding and removing files from game folder including removing attacks.py, movent.py, and class.py and adding ui.py (done due to changes in design structure)
+
+- removed random timer for enemy movent and fire (was removed due to time constraints)
+
+- removed enemy cluster class (scrapped due to time constraints)
+
+- modified the poertion relating to where the game state lives to be more acurate to where it lives now. it resides in the main loop as it made more sense when designing
+
 ## File Structure          
                           
 overall folder structure                  
@@ -7,12 +15,10 @@ overall folder structure
 sdev1200-project1            
 ├── game/                  
 │    ├── main.py             
-│    ├── attacks.py                  
-│    ├── movement.py    
+│    ├── ui.py                   
 │    ├── enemy.py            
-│    ├── player.py              
-│    ├── script.py            
-│    ├── class.py                               
+│    ├── player_char.py              
+│    ├── script.py                                     
 │    └── sprites/                                
 ├──docs/             
 └──README.md   
@@ -27,18 +33,9 @@ sprite (file)
 - attacks 1,2,3                
 damage (int/range of ints)           
 animation/sprite (file)              
-position (x, y)                                                                   
-
-- enemy_cluster (I envision the enemies working a little like Galaga/space invaders, moves the entirety of the enemies on screen)           
-position (x,y)             
-number of enemies (int)           
-random movement  (int)           
+position (x, y)                                                                            
  
-- game state           
-game time (int)            
-pause (bool)          
-start (bool)         
-end (bool)              
+-              
 
 - player           
 life (int)          
@@ -48,7 +45,7 @@ sprite (file)
 
 ## game states
 
-Most if not all of the game state lives in the game state class, making it clean to keep track of. I could also just have the bulk of it live in main with a clear start and end but I will see. Having it be a class may make handling a loop like (start into a menu screen, get into game, end, back to menu, restart) easier 
+currently the game state lives in the main loop and frequently uses the tick time to reference a function to check a list to see what changes to make
 
 ## processes
 
@@ -60,12 +57,10 @@ the game will check for several key events when running
 
 - check user input for action for player character to take 
 
-- several random timers for enemy attack and movement  
-
 - hit detection for shots fired 
 
 - tick game clock up by one 
 
-- run process to move enemy or player 
+- run function to move enemy or fire bullet 
 
 - update/draw frame 
