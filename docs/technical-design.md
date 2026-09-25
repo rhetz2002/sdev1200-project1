@@ -12,7 +12,7 @@
 
 - modified player class by removing life which was removed due time constraints also added the methods attached to the player class
 
--removed attacks and enemy classes and added corresponding enemy and enemy bullets as well as there methods
+- removed attacks and enemy classes and added corresponding enemy and enemy bullets as well as there methods
 
 ## File Structure          
                           
