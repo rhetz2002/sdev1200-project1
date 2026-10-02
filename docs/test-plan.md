@@ -1,5 +1,5 @@
 | Test ID | Category | Description | Expected Output | Actual Output | Pass/Fail |               
-|---------|----------|-------------|-------|-----------------|---------------|-----------|               
+|---------|----------|-------------|-------|-----------------|---------------|               
 | TC-001  | Normal | win 10 games in a row | all games run without issue and ready for an 11th game |  |  |         
 | TC-002  | Normal | lose 10 games in a row | all games run without issue and ready for an 11th game |  |  |             
 | TC-003  | Normal | mixed batch win/lose 10 games in a row | all games run without issue and ready for an 11th game |  |  |            
