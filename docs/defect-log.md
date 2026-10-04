@@ -1,5 +1,5 @@
-| Description | how to reproduce | severity | open, fixed, will-not-fix |
-|---------|----------|-------------|-------|-----------------|---------------|   
+| Description | how to reproduce | severity | open, fixed, will-not-fix |              
+|---------|----------|-------------|-------|
 | game lags after prolonged play due to player bullets stacking up  | Spam fire for certain amount of time | Severe | open |   
 | Going off bottom edge makes game to easy due to enemy bullet despawn  | Move off bottom edge and wait, game ends and you win | moderate | open |         
 | Game only checks for y position and not x when determing weather a bullet should despawn |  move player off left or right edge and wait for blue enemy to fire, player will take damage when hit | Mild | will not adress (simi intended behavior for ease of programming, will despawn when y value is reached)|
