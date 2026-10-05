@@ -28,6 +28,10 @@ class player_bullet(pygame.sprite.Sprite):
     
         self.rect.y -= 1
 
+        if self.rect.y <= -100:
+
+            self.kill()
+
     
 
 
