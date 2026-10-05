@@ -62,7 +62,7 @@ class player(pygame.sprite.Sprite):
         
         pressed = pygame.key.get_pressed()
 
-        if pressed[K_w]:
+        if pressed[K_w] and self.rect.y >= 2:
             
 
             if move_tick >= 30:
@@ -74,7 +74,7 @@ class player(pygame.sprite.Sprite):
             else:
 
                 move_tick += 1
-        if pressed[K_s]:
+        if pressed[K_s] and self.rect.y <= 804:
             
             if move_tick >= 30:
                 
@@ -86,7 +86,7 @@ class player(pygame.sprite.Sprite):
 
                 move_tick += 1
 
-        if pressed[K_a]:
+        if pressed[K_a] and self.rect.x >= -0:
             
             if move_tick >= 30:    
                 
@@ -98,7 +98,7 @@ class player(pygame.sprite.Sprite):
 
                 move_tick += 1
 
-        if pressed[K_d]:
+        if pressed[K_d] and self.rect.x <= 1305:
             
             if move_tick >= 30:
                 
