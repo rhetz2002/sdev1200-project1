@@ -405,6 +405,8 @@ while running:
 
             enemie_bullets.empty()
 
+            bullet.empty()
+
             score_value = 0
 
             past_item_green = []
