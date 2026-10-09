@@ -1,15 +1,3 @@
-# Imports pygame modual
-
-# !!note!!
-#-----------------------
-# core functuonalty is here it is just really disorginised
-# orginisation is on my list of things to do but i thought it was good enough to submit
-#
-# pardon spelling as per usual
-#
-# myles tollefson
-#
-#
 import random
 import sys
 import pygame
@@ -40,54 +28,44 @@ from ui import win
 from ui import score
 from script import *
 
-# Initalises pygame
-score 
+sprite_name = ['title', 'win', 'game_over', 'restart', 'start_button', 'player']
+
+# Initalises pygame 
+
 pygame.init()
-
-def quit():
-
-    pygame.quit()
-    sys.exit()
 
 wincon = False
 
-#test code for testing eneime spawn
+# used for random bullet fire
 
 random_spawn = random.randint(1160 ,11120)
 
-spawn_timer = 0
-
-move_clock = 0
-
-score_value = 0
-
-move_tick = 0
-
-# tracks which items in the script have been done to prevent spam
-past_item_green = []
-past_item_blue = []
-past_item_orange = []
-
-# may or may not use for event gen
-game_clock = 0
-
 # Sets up window with dimensions
+
 width = 1400
 height = 900
 screen = pygame.display.set_mode((width, height))
 
 # Sets window caption
+
 pygame.display.set_caption("Air Combat Comand")
 
 # Sets running to true to keep track of when to close game
+
 running = True
 gameover = False
 
 # add sprites to sprite groups
 
-#menu images 
-
 score_display = score()
+
+for index in sprite_name:
+
+    f'{index}1' = [index]()
+
+    f'{index}_sprite' = pygame.sprite.GroupSingle()
+
+    f'{index}_sprite'
 
 Title = title()
 Title_sprite = pygame.sprite.GroupSingle()
@@ -117,22 +95,38 @@ player_sprite.add(player_obj)
 bullet = pygame.sprite.Group()
 enemie_bullets = pygame.sprite.Group()
 
-
-
 green_enemie = pygame.sprite.Group()
 blue_enemie = pygame.sprite.Group()
 orange_enemie = pygame.sprite.Group()
 
-def reset():
+menu = True
+gameover = False
+
+def quit():
+
+    pygame.quit()
+    sys.exit()
+
+def start():
 
     player_obj.restart()
 
-    
-    
+    spawn_timer = 0
 
+    move_clock = 0
 
-menu = True
-gameover = False
+    score_value = 0
+
+    move_tick = 0
+
+    past_item_green = []
+    
+    past_item_blue = []
+    
+    past_item_orange = []
+
+    game_clock = 0
+
 # while loop will end when user choses to close game
 while running:
 
@@ -330,8 +324,10 @@ while running:
 
         game_clock += 1
 
-# checks for bullit hut on enemy
-
+#----------------------------------------
+# checks for bullit hit on enemy or self
+#----------------------------------------
+    
     for active in bullet:
 
         bullet_hit_green = pygame.sprite.spritecollide(active, green_enemie, True)
@@ -357,24 +353,16 @@ while running:
 
             active.kill()
 
-            
-    
-
-    
-
-       
-    
-    
-    
-    
-    
-
+    #---------------------------
+    # player win check and logic
+    #---------------------------
     if curent_tick - start_tick >= 67000:
+        
         wincon = True
 
     if gameover is True or wincon is True:
         
-        reset()
+        start()
         
         while gameover is True or wincon is True:
 
@@ -405,13 +393,7 @@ while running:
 
             enemie_bullets.empty()
 
-            bullet.empty()
-
-            score_value = 0
-
-            past_item_green = []
-            past_item_blue = []
-            past_item_orange = []   
+            bullet.empty() 
 
             for event in pygame.event.get():
 
@@ -425,45 +407,29 @@ while running:
                             wincon = False
 
                             start_tick =  pygame.time.get_ticks()
-                            spawn_timer = 0
-                            game_clock = 0
-                            move_clock = 0
                             
-
-
                 if event.type == pygame.QUIT:
             
                     running = False
 
                     quit()
 
-    
+#----------------------------------------
+#          listens for user input
+#----------------------------------------
+    # controlls player movement
 
-    move_tick = player_obj.player_con(move_tick)  
+    move_tick = player_obj.player_con(move_tick)
 
-
-
-    # listens for user input
-    #print(curent_tick)
     for event in pygame.event.get():
         
-       
-
-        
-
-
-        #controlls player movment
-
-                      
+        # controlls player fire
 
         if event.type == KEYDOWN and event.key == K_SPACE:
 
             bullet_obj = player_obj.player_fire()
 
             bullet.add(bullet_obj)
-
-            
-            
 
         # Check if the user clicked X button
         
