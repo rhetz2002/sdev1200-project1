@@ -30,6 +30,7 @@ from script import *
 
 sprite_name = ['title', 'win', 'game_over', 'restart', 'start_button', 'player']
 
+sprites = {}
 # Initalises pygame 
 
 pygame.init()
@@ -59,14 +60,23 @@ gameover = False
 
 score_display = score()
 
-for index in sprite_name:
+key = 0
 
-    f'{index}1' = [index]()
+sprites = {}
 
-    f'{index}_sprite' = pygame.sprite.GroupSingle()
+while key <= 5:
 
-    f'{index}_sprite'
+    sprite[f'{str(key)}1'] = sprite_name[key]()
 
+    sprite[f'{str(key)}_sprite'] = pygame.sprite.GroupSingle()
+
+    sprite[f'{str(key)}_sprite'].add(sprite[f'{str(key)}1'])
+
+    key += 1
+
+#------------------------------------
+#   remove when done
+#------------------------------------
 Title = title()
 Title_sprite = pygame.sprite.GroupSingle()
 Title_sprite.add(Title)
@@ -98,6 +108,10 @@ enemie_bullets = pygame.sprite.Group()
 green_enemie = pygame.sprite.Group()
 blue_enemie = pygame.sprite.Group()
 orange_enemie = pygame.sprite.Group()
+
+#------------------------------------
+#   remove when done
+#------------------------------------
 
 menu = True
 gameover = False
