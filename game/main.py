@@ -1,3 +1,6 @@
+# going to send it in as is. it works and the major things that 
+# bugs me were fixed, fixed major errors and cleaned up where i could
+
 import random
 import sys
 import pygame
@@ -28,7 +31,7 @@ from ui import win
 from ui import score
 from script import *
 
-sprite_name = ['title', 'win', 'game_over', 'restart', 'start_button', 'player']
+sprite_name = [title, win, game_over, restart, start_button, player]
 
 sprites = {}
 # Initalises pygame 
@@ -64,43 +67,18 @@ key = 0
 
 sprites = {}
 
+# it buggs me to no end with how porly i made this loop and how it names the 
+# dictionary keys but im too tired to fix it so i just made sure to clarify with coments
+
 while key <= 5:
 
-    sprite[f'{str(key)}1'] = sprite_name[key]()
+    sprites[f'{str(key)}1'] = sprite_name[key]()
 
-    sprite[f'{str(key)}_sprite'] = pygame.sprite.GroupSingle()
+    sprites[f'{str(key)}_sprite'] = pygame.sprite.GroupSingle()
 
-    sprite[f'{str(key)}_sprite'].add(sprite[f'{str(key)}1'])
+    sprites[f'{str(key)}_sprite'].add(sprites[f'{str(key)}1'])
 
     key += 1
-
-#------------------------------------
-#   remove when done
-#------------------------------------
-Title = title()
-Title_sprite = pygame.sprite.GroupSingle()
-Title_sprite.add(Title)
-
-Win_obj = win()
-Win_message = pygame.sprite.GroupSingle()
-Win_message.add(Win_obj)
-
-Game_over = game_over()
-Game_over_message = pygame.sprite.GroupSingle()
-Game_over_message.add(Game_over)
-
-restart_but = restart()
-restart_button = pygame.sprite.GroupSingle()
-restart_button.add(restart_but)
-
-start = start_button()
-startbutton = pygame.sprite.GroupSingle()
-startbutton.add(start)
-
-# single sprite group for player
-player_obj = player()
-player_sprite = pygame.sprite.GroupSingle()
-player_sprite.add(player_obj)
 
 bullet = pygame.sprite.Group()
 enemie_bullets = pygame.sprite.Group()
@@ -108,10 +86,6 @@ enemie_bullets = pygame.sprite.Group()
 green_enemie = pygame.sprite.Group()
 blue_enemie = pygame.sprite.Group()
 orange_enemie = pygame.sprite.Group()
-
-#------------------------------------
-#   remove when done
-#------------------------------------
 
 menu = True
 gameover = False
@@ -123,7 +97,12 @@ def quit():
 
 def start():
 
-    player_obj.restart()
+    global spawn_timer, move_clock, score_value, move_tick, game_clock
+    global past_item_green, past_item_blue, past_item_orange
+
+    #restart player position
+
+    sprites['51'].restart()
 
     spawn_timer = 0
 
@@ -141,14 +120,21 @@ def start():
 
     game_clock = 0
 
+start()
+
 # while loop will end when user choses to close game
+
 while running:
 
     while menu is True:
+        
+        # refrencs sprites dictionary 0_sprite is title sprite
 
-        Title_sprite.draw(screen)
+        sprites['0_sprite'].draw(screen)
 
-        startbutton.draw(screen)    
+        # 4_sprite is start button
+
+        sprites['4_sprite'].draw(screen)    
 
         pygame.display.flip() 
 
@@ -157,22 +143,20 @@ while running:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 
                 if event.button == 1: 
-
-                    if start.rect.collidepoint(event.pos):
+                    
+                    # miss named but going with it, is also start button
+                    # '41' start button
+                    if sprites['41'].rect.collidepoint(event.pos):
 
                         menu = False
 
                         start_tick =  pygame.time.get_ticks()
-
 
             if event.type == pygame.QUIT:
             
                 running = False
 
                 quit()
-
-    
-    
 
     score_display.score_draw(screen, 50, 50, score)
 
@@ -191,7 +175,6 @@ while running:
 
                 enemie.shots_fired = 0
 
-
     screen.fill((255, 255, 255))
 
     # Create a surface and pass in a tuple containing its length and width
@@ -202,9 +185,7 @@ while running:
     
     surf.fill((0, 0, 0))
 
-    
-
-    #draws sprites
+    # draws sprites
 
     bullet.update()
 
@@ -228,35 +209,26 @@ while running:
 
     # calls player bullet to move if on screen
     
-    #TEMP COMMENT DO NOT REMOVE
-
-    
 
     enemie_bullets.draw(screen)
 
     bullet.draw(screen) 
-
-    player_sprite.draw(screen)
+    # sprites['5_sprite'] player sprite group
+    sprites['5_sprite'].draw(screen)
 
     green_enemie.draw(screen)
 
     blue_enemie.draw(screen)
 
     orange_enemie.draw(screen)
-
-    pygame.draw.rect(screen, (0, 255, 0), (30, 850, player_obj.hp * 20 , 30) ) 
+    # sprites['51'] player sprite
+    pygame.draw.rect(screen, (0, 255, 0), (30, 850, sprites['51'].hp * 20 , 30) ) 
 
     score_display.score_draw(screen, 50, 50,  score_value)
     
-
     pygame.display.flip() 
-        
-    # debug system for rand enmy spawn and shoot
-    #-------------------------------------------
-    #curently being modified for final spawn system
 
     curent_tick = pygame.time.get_ticks()
-    
 
     if str(curent_tick - start_tick) not in past_item_green:  
 
@@ -272,11 +244,6 @@ while running:
 
                 green_enemie.add(green_obj)
 
-
-                    
-
-    
-
     if str(curent_tick - start_tick) not in past_item_blue:  
 
         if str(curent_tick - start_tick) in script:
@@ -291,9 +258,6 @@ while running:
         
                 blue_enemie.add(blue_obj)
 
-
-                    
-
     if str(curent_tick - start_tick) not in past_item_orange:  
 
         if str(curent_tick - start_tick) in script:
@@ -307,12 +271,6 @@ while running:
                 orange_obj.spawn(item)
 
                 orange_enemie.add(orange_obj)
-
-
-                    
-
-        
-
 
     if spawn_timer >= random_spawn:
         
@@ -330,11 +288,9 @@ while running:
 
             enemie_bullets.add(enemie.atk())
 
-
     else: 
 
         spawn_timer += 1
-
 
         game_clock += 1
 
@@ -355,15 +311,14 @@ while running:
             active.kill()
 
             score_value += 30
-    
 
     for active in enemie_bullets:
-
-        bullet_hit_self = bullet_hit_green = pygame.sprite.spritecollide(active, player_sprite, False)
+        # sprites['5_sprite'] = player sprite
+        bullet_hit_self = bullet_hit_green = pygame.sprite.spritecollide(active, sprites['5_sprite'], False)
 
         if bullet_hit_self:
-
-            gameover = player_obj.damage()
+            # player obj
+            gameover = sprites['51'].damage()
 
             active.kill()
 
@@ -383,21 +338,20 @@ while running:
             screen.fill((0, 0, 0))    
 
             if gameover is True:
-
-                Game_over_message.draw(screen)
-
-                restart_button.draw(screen)    
+                #game over sprite
+                sprites['2_sprite'].draw(screen)
+                #restart button
+                sprites['3_sprite'].draw(screen)    
 
                 pygame.display.flip() 
 
             if wincon is True:
-
-                Win_message.draw(screen)
-
-                restart_button.draw(screen)    
+                # sprites['1_sprite'] = win sprite
+                sprites['1_sprite'].draw(screen)
+                #restart button
+                sprites['3_sprite'].draw(screen)    
 
                 pygame.display.flip() 
-
 
             orange_enemie.empty()
 
@@ -432,16 +386,16 @@ while running:
 #          listens for user input
 #----------------------------------------
     # controlls player movement
-
-    move_tick = player_obj.player_con(move_tick)
+    # sprite['51'] = player obj
+    move_tick = sprites['51'].player_con(move_tick)
 
     for event in pygame.event.get():
         
         # controlls player fire
 
         if event.type == KEYDOWN and event.key == K_SPACE:
-
-            bullet_obj = player_obj.player_fire()
+            # sprite['51'] = player obj
+            bullet_obj = sprites['51'].player_fire()
 
             bullet.add(bullet_obj)
 
@@ -451,9 +405,6 @@ while running:
 
             running = False
     
-
-    
-            
 # Cleanly closes game
 
 quit()
