@@ -1,4 +1,14 @@
 # sdev1200-project1
-project 1 for sdev 1200 
+ 
+## how to install
 
-Air Combat Comand
+- 1 download and clone from github repo 
+- 2 install pygame and python through your chosen means
+- 3 in a command prompt run python3 main.py in the game directory
+- 4 enjoy
+
+---
+
+## how to play
+
+
